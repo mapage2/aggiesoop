@@ -13,7 +13,7 @@ public class Student {
 
     public Student(){
 
-        this.setFirstName("");
+        this.setFirstName("test");
         this.setLastName("");
         this.setGpa(0.0);
         this.setMajor("");
