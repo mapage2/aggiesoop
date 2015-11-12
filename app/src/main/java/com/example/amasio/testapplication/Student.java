@@ -10,6 +10,7 @@ public class Student {
     private double gpa;
     private String major;
     private String email;
+    private int bannerId;
 
     public Student(){
 
@@ -18,15 +19,17 @@ public class Student {
         this.setGpa(0.0);
         this.setMajor("");
         this.setEmail("");
+        this.setBannerId(0);
     }
 
-    public Student(String firstName, String lastName, double gpa, String major, String email){
+    public Student(String firstName, String lastName, double gpa, String major, String email, int bannerId){
 
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setGpa(gpa);
         this.setMajor(major);
         this.setEmail(email);
+        this.setBannerId(bannerId);
     }
 
 
@@ -68,5 +71,12 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public int getBannerId() {
+        return bannerId;
+    }
+
+    public void setBannerId(int bannerId) {
+        this.bannerId = bannerId;
     }
 }
