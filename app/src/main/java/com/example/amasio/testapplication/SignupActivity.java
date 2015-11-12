@@ -21,8 +21,9 @@ public class SignupActivity extends AppCompatActivity {
     EditText bannerIdText;
     EditText firstNameText;
     EditText lastNameText;
-    //add email EditText
+    EditText emailText;
     EditText gpaText;
+    Spinner classificationSpinner;
     Spinner majorSpinner;
 
     @Override
@@ -36,18 +37,30 @@ public class SignupActivity extends AppCompatActivity {
         bannerIdText = (EditText) findViewById(R.id.bannerId);
         firstNameText = (EditText) findViewById(R.id.firstName);
         lastNameText = (EditText) findViewById(R.id.lastName);
+        emailText = (EditText) findViewById(R.id.email);
         gpaText = (EditText) findViewById(R.id.gpa);
+        classificationSpinner = (Spinner) findViewById(R.id.classification);
         majorSpinner = (Spinner) findViewById(R.id.major);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> majorAdapter = ArrayAdapter.createFromResource(this,
                 R.array.college_majors, android.R.layout.simple_spinner_item);
 
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        majorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Apply the adapter to the spinner
-        majorSpinner.setAdapter(adapter);
+        majorSpinner.setAdapter(majorAdapter);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> classAdapter = ArrayAdapter.createFromResource(this,
+                R.array.classification, android.R.layout.simple_spinner_item);
+
+        // Specify the layout to use when the list of choices appears
+        classAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        classificationSpinner.setAdapter(classAdapter);
     }
 
     public void onRegisterClicked(View v){
@@ -55,10 +68,11 @@ public class SignupActivity extends AppCompatActivity {
         int banner = Integer.parseInt(bannerIdText.getText().toString());
         double gpa = Double.parseDouble(gpaText.getText().toString());
         String majorValue = majorSpinner.getSelectedItem().toString();
+        String classValue = classificationSpinner.getSelectedItem().toString();
 
         studentDb = new DatabaseController(this);
         boolean inserted = studentDb.insertStudent(banner, firstNameText.getText().toString(),
-                lastNameText.getText().toString(), gpa, majorValue);
+                lastNameText.getText().toString(), emailText.getText().toString(), gpa, classValue, majorValue);
 
         if(inserted){
             Toast.makeText(SignupActivity.this, "Data Inserted", Toast.LENGTH_LONG ).show();
@@ -68,3 +82,4 @@ public class SignupActivity extends AppCompatActivity {
     }
 
 }
+/** FIND A WAY TO INCREMENT */
