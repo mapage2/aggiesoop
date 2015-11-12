@@ -14,7 +14,7 @@ public class Student {
 
     public Student(){
 
-        this.setFirstName("yes");
+        this.setFirstName("");
         this.setLastName("");
         this.setGpa(0.0);
         this.setMajor("");
