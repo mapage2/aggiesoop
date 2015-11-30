@@ -34,4 +34,17 @@
         completions."
     </string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_student_profile">studentProfile</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="search_jobs">Search Jobs</string>
+    <string name="student_picture">studentPic</string>
+    <string name="studentPic_main">studentPic</string>
+    <string name="student_Name">Name:</string>
+    <string name="student_major">Major:</string>
+    <string name="student_class">Classification:</string>
+    <string name="student_gpa">GPA:</string>
+    <string name="student_college">College:</string>
 </resources>
