@@ -43,8 +43,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".studentProfile"
-            android:label="@string/title_activity_student_profile"
+            android:name=".MainPageActivity"
+            android:label="@string/title_activity_main_page"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="com.example.amasio.testapplication.MainPageActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StudentLoginActivity"
+            android:label="@string/title_activity_student_login"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>

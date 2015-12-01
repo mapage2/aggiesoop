@@ -2,6 +2,7 @@ package com.example.amasio.testapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,6 +23,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText firstNameText;
     EditText lastNameText;
     EditText emailText;
+    EditText passwordText;
     EditText gpaText;
     Spinner classificationSpinner;
     Spinner majorSpinner;
@@ -38,6 +40,7 @@ public class SignupActivity extends AppCompatActivity {
         firstNameText = (EditText) findViewById(R.id.firstName);
         lastNameText = (EditText) findViewById(R.id.lastName);
         emailText = (EditText) findViewById(R.id.email);
+        passwordText = (EditText) findViewById(R.id.password);
         gpaText = (EditText) findViewById(R.id.gpa);
         classificationSpinner = (Spinner) findViewById(R.id.classification);
         majorSpinner = (Spinner) findViewById(R.id.major);
@@ -72,10 +75,13 @@ public class SignupActivity extends AppCompatActivity {
 
         studentDb = new DatabaseController(this);
         boolean inserted = studentDb.insertStudent(banner, firstNameText.getText().toString(),
-                lastNameText.getText().toString(), emailText.getText().toString(), gpa, classValue, majorValue);
+                lastNameText.getText().toString(), emailText.getText().toString(),
+                passwordText.getText().toString(), gpa, classValue, majorValue);
 
         if(inserted){
             Toast.makeText(SignupActivity.this, "Data Inserted", Toast.LENGTH_LONG ).show();
+            Intent intent  = new Intent("com.example.amasio.testapplication.MainPageActivity");
+            startActivity(intent);
         }else {
             Toast.makeText(SignupActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
         }
