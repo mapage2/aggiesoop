@@ -5,33 +5,50 @@ package com.example.amasio.testapplication;
  */
 public class Student {
 
+    private int bannerId;
     private String firstName;
     private String lastName;
-    private double gpa;
-    private String major;
     private String email;
-    private int bannerId;
+    private String password;
+    private double gpa;
+    private String classification;
+    private String major;
+
+
 
     public Student(){
 
+        this.setBannerId(0);
         this.setFirstName("");
         this.setLastName("");
-        this.setGpa(0.0);
-        this.setMajor("");
         this.setEmail("");
-        this.setBannerId(0);
+        this.setPassword("");
+        this.setGpa(0.0);
+        this.setClassification("");
+        this.setMajor("");
     }
 
-    public Student(String firstName, String lastName, double gpa, String major, String email, int bannerId){
+    public Student(int bannerId, String firstName, String lastName, String email,String password, double gpa,
+                   String classification, String major){
 
+        this.setBannerId(bannerId);
         this.setFirstName(firstName);
         this.setLastName(lastName);
-        this.setGpa(gpa);
-        this.setMajor(major);
         this.setEmail(email);
-        this.setBannerId(bannerId);
+        this.setPassword(password);
+        this.setGpa(gpa);
+        this.setClassification(classification);
+        this.setMajor(major);
     }
 
+
+    public int getBannerId() {
+        return bannerId;
+    }
+
+    public void setBannerId(int bannerId) {
+        this.bannerId = bannerId;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -49,12 +66,36 @@ public class Student {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public double getGpa() {
         return gpa;
     }
 
     public void setGpa(double gpa) {
         this.gpa = gpa;
+    }
+
+    public String getClassification() {
+        return classification;
+    }
+
+    public void setClassification(String classification) {
+        this.classification = classification;
     }
 
     public String getMajor() {
@@ -65,18 +106,6 @@ public class Student {
         this.major = major;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public int getBannerId() {
-        return bannerId;
-    }
 
-    public void setBannerId(int bannerId) {
-        this.bannerId = bannerId;
-    }
 }

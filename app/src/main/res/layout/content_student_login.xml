@@ -59,18 +59,19 @@
             android:weightSum="1">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="172dp"
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:id="@+id/loginButton"
-                android:layout_weight="0.70" />
+                android:onClick="onLoginClicked" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Forgot Password"
-                android:id="@+id/forgotPassButton"
-                android:layout_gravity="center_horizontal" />
+                android:text="Sign Up"
+                android:id="@+id/signupButton"
+                android:layout_gravity="center_horizontal"
+                android:onClick="onSignupClicked" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

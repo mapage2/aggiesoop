@@ -69,14 +69,19 @@ public class SignupActivity extends AppCompatActivity {
     public void onRegisterClicked(View v){
 
         int banner = Integer.parseInt(bannerIdText.getText().toString());
+        String firstName = firstNameText.getText().toString();
+        String lastName = lastNameText.getText().toString();
+        String email = emailText.getText().toString();
+        String password = passwordText.getText().toString();
         double gpa = Double.parseDouble(gpaText.getText().toString());
         String majorValue = majorSpinner.getSelectedItem().toString();
         String classValue = classificationSpinner.getSelectedItem().toString();
 
+
+        s = new Student(banner, firstName, lastName, email, password, gpa, majorValue, classValue);
+
         studentDb = new DatabaseController(this);
-        boolean inserted = studentDb.insertStudent(banner, firstNameText.getText().toString(),
-                lastNameText.getText().toString(), emailText.getText().toString(),
-                passwordText.getText().toString(), gpa, classValue, majorValue);
+        boolean inserted = studentDb.insertStudent(s);
 
         if(inserted){
             Toast.makeText(SignupActivity.this, "Data Inserted", Toast.LENGTH_LONG ).show();

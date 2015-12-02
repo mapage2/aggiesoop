@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLoginClicked(View v){
-        Intent intent = new Intent("com.example.amasio.testapplication.LoginActivity");
+        Intent intent = new Intent("com.example.amasio.testapplication.StudentLoginActivity");
         startActivity(intent);
     }
 

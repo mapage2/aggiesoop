@@ -56,6 +56,11 @@
             android:name=".StudentLoginActivity"
             android:label="@string/title_activity_student_login"
             android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="com.example.amasio.testapplication.StudentLoginActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

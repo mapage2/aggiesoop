@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class StudentLoginActivity extends AppCompatActivity {
 
@@ -22,9 +23,8 @@ public class StudentLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         toolbar.setTitle("Student Login");
+        setSupportActionBar(toolbar);
 
         studentDb = new DatabaseController(this);
         email = (EditText) findViewById(R.id.email);
@@ -36,30 +36,24 @@ public class StudentLoginActivity extends AppCompatActivity {
         String emailVal = email.getText().toString();
         String passwordVal = password.getText().toString();
 
-        Cursor res = studentDb.login(emailVal, passwordVal);
-        if(res.getCount() == 0){
-            showMessage("ERROR", "NOTHING FOUND!");
-            return;
-        }
+        String dbPassVal = studentDb.login(emailVal);
 
-        String emailDb = res.getString(0);
-        String passwordDb = res.getString(1);
+        String emailPassword = emailVal+ " "+dbPassVal;
 
-        if(passwordVal == passwordDb){
-            Intent intent = new Intent();
+        if(passwordVal.equals(dbPassVal)){
+
+            Intent intent = new Intent("com.example.amasio.testapplication.MainPageActivity");
             startActivity(intent);
+        }else{
+            Toast.makeText(StudentLoginActivity.this, "Incorrect E-mail or Password",
+                    Toast.LENGTH_LONG).show();
         }
+    }
 
-//            buffer.append("ID: "+res.getString(0)+ "\n");
-//            buffer.append("BANNER ID: "+res.getString(1)+ "\n");
-//            buffer.append("NAME: "+res.getString(2)+" "+ res.getString(3)+"\n");
-//            buffer.append("E-MAIL: "+res.getString(4)+ "\n");
-//            buffer.append("GPA: "+res.getString(6)+ "\n");
-//            buffer.append("CLASSIFICATION: "+res.getString(7)+ "\n");
-//            buffer.append("MAJOR: "+res.getString(8)+ "\n\n");
-        }
-        //showMessage("Data", buffer.toString());
-
+    public void onSignupClicked(View v){
+        Intent intent = new Intent("com.example.amasio.testapplication.SignupActivity");
+        startActivity(intent);
+    }
 
     public void showMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

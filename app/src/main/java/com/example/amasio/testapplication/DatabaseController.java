@@ -22,10 +22,10 @@ public class DatabaseController extends SQLiteOpenHelper {
     public static final String COL_7 = "GPA";
     public static final String COL_8 = "CLASSIFICATION";
     public static final String COL_9 = "MAJOR";
+    Student s;
 
     public DatabaseController(Context context) {
         super(context, DATABASE_NAME, null, 1);
-
     }
 
     @Override
@@ -43,18 +43,19 @@ public class DatabaseController extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertStudent(int bannerId, String firstName, String lastName, String email,
-                                 String password, double gpa, String classification, String major){
+    public boolean insertStudent(Student student){
 
+        s = student;
         ContentValues cv = new ContentValues();
-        cv.put(COL_2, bannerId);
-        cv.put(COL_3, firstName);
-        cv.put(COL_4, lastName);
-        cv.put(COL_5, email);
-        cv.put(COL_6, password);
-        cv.put(COL_7, gpa);
-        cv.put(COL_8, classification);
-        cv.put(COL_9, major);
+
+        cv.put(COL_2, s.getBannerId());
+        cv.put(COL_3, s.getFirstName());
+        cv.put(COL_4, s.getLastName());
+        cv.put(COL_5, s.getEmail());
+        cv.put(COL_6, s.getPassword());
+        cv.put(COL_7, s.getGpa());
+        cv.put(COL_8, s.getClassification());
+        cv.put(COL_9, s.getMajor());
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.insert(TABLE_NAME, null, cv);
         db.close();
@@ -64,7 +65,6 @@ public class DatabaseController extends SQLiteOpenHelper {
         } else{
             return true;
         }
-
     }
 
     public Cursor getAllData(){
@@ -73,12 +73,24 @@ public class DatabaseController extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor login(String email, String password){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("SELECT EMAIL, PASSWORD FROM "+TABLE_NAME+" WHERE EMAIL="+email+
-                " AND PASSWORD= "+password, null);
-        return res;
+    public String login(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("SELECT EMAIL, PASSWORD FROM " + TABLE_NAME, null);
+        String dbEmail;
+        String password = "Incorrect Password";
+
+        if(res.getCount() == 0){
+            password = "Incorrect E-Mail";
+            return password;
+        }
+        while(res.moveToNext()){
+            dbEmail = res.getString(0);
+
+            if(dbEmail.equals(email)){
+                password = res.getString(1);
+                return password;
+            }
+        }
+        return password;
     }
-
-
 }
