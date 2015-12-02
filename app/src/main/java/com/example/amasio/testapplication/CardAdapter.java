@@ -15,6 +15,7 @@ import java.util.List;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
     List<Job> jobItems;
+    Job job;
 
 
     public CardAdapter(ArrayList<Job> jobs) {
@@ -33,9 +34,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Job j = jobItems.get(i);
-        viewHolder.title.setText(j.getTitle());
-        viewHolder.info.setText(j.getMajor() + ", " + j.getLocation());
+        job = jobItems.get(i);
+        viewHolder.title.setText(job.getTitle());
+        viewHolder.info.setText(job.getMajor() + ", " + job.getLocation());
         //viewHolder.imgThumbnail.setImageResource();
     }
 
@@ -55,5 +56,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             title =(TextView)itemView.findViewById(R.id.titleText);
             info = (TextView)itemView.findViewById(R.id.infoText);
         }
+    }
+
+    public Job getJob(){
+        return job;
     }
 }

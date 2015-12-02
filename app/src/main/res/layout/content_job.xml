@@ -24,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Job Title"
             android:id="@+id/jobTitle"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.06" />
@@ -32,7 +31,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Job Description"
             android:id="@+id/description"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.37" />
@@ -40,14 +38,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="preReq"
             android:id="@+id/preReq"
             android:layout_weight="0.22" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contact"
             android:id="@+id/contact"
             android:layout_weight="0.11" />
 

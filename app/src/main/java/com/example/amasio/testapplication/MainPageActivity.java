@@ -25,6 +25,7 @@ public class MainPageActivity extends AppCompatActivity {
     RecyclerView rView;
     LinearLayoutManager layoutManager;
     CardAdapter adapter;
+    Job j;
 
 
     @Override
@@ -175,8 +176,12 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void onJobCardClicked(View v){
 
+        j = adapter.getJob();
         Intent intent = new Intent(MainPageActivity.this, JobActivity.class);
-        v.getContext().startActivity(intent);
+        intent.putExtra("Job",j);
+        startActivity(intent);
+//        Intent intent = new Intent(MainPageActivity.this, JobActivity.class);
+//        v.getContext().startActivity(intent);
     }
 
     public void showMessage(String title, String message){
