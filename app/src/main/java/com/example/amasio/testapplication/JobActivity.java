@@ -25,7 +25,6 @@ public class JobActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
         job = (Job) intent.getSerializableExtra("Job");
@@ -39,6 +38,8 @@ public class JobActivity extends AppCompatActivity {
         contact = (TextView)findViewById(R.id.contact);
         contact.setText(job.getContact());
 
+        toolbar.setTitle(job.getTitle());
+        setSupportActionBar(toolbar);
 
     }
 
