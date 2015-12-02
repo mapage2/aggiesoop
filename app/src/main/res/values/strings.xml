@@ -52,4 +52,5 @@
     <string name="title_activity_main_page">MainPage</string>
     <string name="title_activity_student_login">StudentLoginActivity</string>
     <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_job">JobActivity</string>
 </resources>
