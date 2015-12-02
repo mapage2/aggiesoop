@@ -12,11 +12,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
+
 public class StudentLoginActivity extends AppCompatActivity {
 
     DatabaseController studentDb;
     EditText email;
     EditText password;
+    Student s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +39,25 @@ public class StudentLoginActivity extends AppCompatActivity {
         String emailVal = email.getText().toString();
         String passwordVal = password.getText().toString();
 
+
         String dbPassVal = studentDb.login(emailVal);
 
         String emailPassword = emailVal+ " "+dbPassVal;
 
+
         if(passwordVal.equals(dbPassVal)){
 
-            Intent intent = new Intent("com.example.amasio.testapplication.MainPageActivity");
+            s = studentDb.getStudent(emailVal);
+
+//            Intent intent = new Intent("com.example.amasio.testapplication.MainPageActivity");
+//            startActivity(intent);
+
+            Intent intent = new Intent(StudentLoginActivity.this, MainPageActivity.class);
+            intent.putExtra("Student",s);
             startActivity(intent);
+
+            Toast.makeText(StudentLoginActivity.this, "Login Succesful",
+                    Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(StudentLoginActivity.this, "Incorrect E-mail or Password",
                     Toast.LENGTH_LONG).show();

@@ -1,9 +1,11 @@
 package com.example.amasio.testapplication;
 
+import java.io.Serializable;
+
 /**
  * Created by Amasio on 11/3/15.
  */
-public class Student {
+public class Student implements Serializable {
 
     private int bannerId;
     private String firstName;
@@ -28,7 +30,7 @@ public class Student {
         this.setMajor("");
     }
 
-    public Student(int bannerId, String firstName, String lastName, String email,String password, double gpa,
+    public Student(int bannerId, String firstName, String lastName, String email, String password, double gpa,
                    String classification, String major){
 
         this.setBannerId(bannerId);
@@ -41,6 +43,17 @@ public class Student {
         this.setMajor(major);
     }
 
+    public Student(int bannerId, String firstName, String lastName, String email, double gpa,
+                   String classification, String major){
+
+        this.setBannerId(bannerId);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setEmail(email);
+        this.setGpa(gpa);
+        this.setClassification(classification);
+        this.setMajor(major);
+    }
 
     public int getBannerId() {
         return bannerId;

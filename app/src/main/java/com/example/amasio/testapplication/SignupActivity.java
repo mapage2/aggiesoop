@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.Serializable;
+
 public class SignupActivity extends AppCompatActivity {
 
     DatabaseController studentDb;
@@ -78,14 +80,18 @@ public class SignupActivity extends AppCompatActivity {
         String classValue = classificationSpinner.getSelectedItem().toString();
 
 
-        s = new Student(banner, firstName, lastName, email, password, gpa, majorValue, classValue);
+        s = new Student(banner, firstName, lastName, email, password, gpa, classValue, majorValue);
 
         studentDb = new DatabaseController(this);
         boolean inserted = studentDb.insertStudent(s);
 
         if(inserted){
-            Toast.makeText(SignupActivity.this, "Data Inserted", Toast.LENGTH_LONG ).show();
-            Intent intent  = new Intent("com.example.amasio.testapplication.MainPageActivity");
+            Toast.makeText(SignupActivity.this, "Student Registered", Toast.LENGTH_LONG ).show();
+//            Intent intent  = new Intent("com.example.amasio.testapplication.MainPageActivity");
+//            startActivity(intent);
+
+            Intent intent = new Intent(SignupActivity.this, MainPageActivity.class);
+            intent.putExtra("Student",s);
             startActivity(intent);
         }else {
             Toast.makeText(SignupActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
